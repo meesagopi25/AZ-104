@@ -8,6 +8,8 @@ REGION="eastus"
 USERNAME="kk_lab_user_main-5113e54225244669@azurekmlprodkodekloud.onmicrosoft.com"
 PASSWORD="3@=QA2ZGCRC2FWNQ"
 VM_SIZE="Standard_B1s"
+OS_DISK_SKU="Standard_LRS"     # Explicit SKU definition to comply with Azure Policy
+OS_DISK_SIZE=30                # Explicit size under 128 GB to satisfy lab restrictions
 
 # Dynamic Resource Group Name with current date
 RG_NAME="kml_rg_main-5113e54225244669"
@@ -106,12 +108,13 @@ for i in {1..3}; do
       --admin-password "$PASSWORD" \
       --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" \
       --os-disk-name "webserver-0$i-osdisk" \
+      --storage-sku "$OS_DISK_SKU" \
+      --os-disk-size-gb "$OS_DISK_SIZE" \
       --output none
 done
 
 # --- Deploy Jumpbox VM ---
 print_yellow "Creating jumpbox VM"
-# This single command provisions the Public IP and attaches it to the jumpboxSubnet infrastructure automatically
 az vm create \
   --resource-group "$RG_NAME" \
   --name "jumpbox-vm" \
@@ -124,6 +127,8 @@ az vm create \
   --image "Ubuntu2204" \
   --public-ip-address "jumpbox-pip" \
   --public-ip-sku "Standard" \
+  --storage-sku "$OS_DISK_SKU" \
+  --os-disk-size-gb "$OS_DISK_SIZE" \
   --output none
 
 # --- Configure Jumpbox via Custom Script Extension ---
@@ -140,7 +145,6 @@ az vm extension set \
 print_status "Deployment Completed!!"
 
 # --- Print Outputs ---
-# Fetch Jumpbox Public IP Details (CLI yields IP address details directly since dynamic DNS label config requires separate mapping)
 JUMPBOX_IP=$(az network public-ip show --resource-group "$RG_NAME" --name "jumpbox-pip" --query "ipAddress" -o tsv)
 echo "Jumpbox VM Public IP: $JUMPBOX_IP"
 
