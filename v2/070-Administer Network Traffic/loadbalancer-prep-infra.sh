@@ -5,8 +5,8 @@ set -e
 
 # --- Variables ---
 REGION="eastus"
-USERNAME="kk_lab_user_main-5113e54225244669@azurekmlprodkodekloud.onmicrosoft.com"
-PASSWORD="3@=QA2ZGCRC2FWNQ"
+USERNAME="kk_lab_user_main-cb7eb4fc072146fc@azurekmlprodkodekloud.onmicrosoft.com"
+PASSWORD="8F97FXLSWVJ#D@+&"
 VM_SIZE="Standard_B1s"
 OS_DISK_SKU="Standard_LRS"     # Explicit SKU definition to comply with Azure Policy
 OS_DISK_SIZE=30                # Explicit size under 128 GB to satisfy lab restrictions
