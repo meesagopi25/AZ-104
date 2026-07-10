@@ -10,7 +10,7 @@ PASSWORD="3@=QA2ZGCRC2FWNQ"
 VM_SIZE="Standard_B1s"
 
 # Dynamic Resource Group Name with current date
-RG_NAME="rg-azlb-$(date +%Y%m%d)"
+RG_NAME="kml_rg_main-5113e54225244669"
 VNET_NAME="eus-web-dev"
 
 # Helper color functions
@@ -19,7 +19,7 @@ print_status() { echo -e "\e[43m\e[37m$1\e[0m"; }
 
 # --- Create Resource Group ---
 print_yellow "Creating Resource Group: $RG_NAME"
-az group create --name "$RG_NAME" --location "$REGION" --output none
+#az group create --name "$RG_NAME" --location "$REGION" --output none
 
 # --- Create Networking Infrastructure ---
 print_yellow "Adding subnet configuration & Creating $VNET_NAME"
