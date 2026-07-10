@@ -119,7 +119,7 @@ az vm create \
   --vnet-name "$VNET_NAME" \
   --subnet "jumpboxSubnet" \
   --size "Standard_B1s" \
-  --admin-username "$USERNAME" \
+  --admin-username "mgopi1982" \
   --admin-password "$PASSWORD" \
   --image "Ubuntu2204" \
   --public-ip-address "jumpbox-pip" \
