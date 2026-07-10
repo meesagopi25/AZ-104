@@ -12,7 +12,7 @@ OS_DISK_SKU="Standard_LRS"     # Explicit SKU definition to comply with Azure Po
 OS_DISK_SIZE=30                # Explicit size under 128 GB to satisfy lab restrictions
 
 # Dynamic Resource Group Name with current date
-RG_NAME="kml_rg_main-5113e54225244669"
+RG_NAME="kml_rg_main-cb7eb4fc072146fc"
 VNET_NAME="eus-web-dev"
 
 # Helper color functions
