@@ -102,7 +102,7 @@ for i in {1..3}; do
       --nics "webserver-0$i-nic" \
       --availability-set "az-web-set" \
       --size "$VM_SIZE" \
-      --admin-username "$USERNAME" \
+      --admin-username "mgopi1982" \
       --admin-password "$PASSWORD" \
       --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" \
       --os-disk-name "webserver-0$i-osdisk" \
